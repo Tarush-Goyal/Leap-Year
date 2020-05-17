@@ -63,6 +63,10 @@ public class LeapYear {
 				return false;
 			}
 			
+			if(isDivisibleBy4(year) && !isDivisibleBy100(year)) {
+				return true;
+			}
+			
 			return false;
 			
 		}
