@@ -16,6 +16,13 @@ public class LeapYear {
 			
 	}
 	
+	boolean isDivisibleBy4000(int year) {
+		if(year%4000==0) {
+			return true;
+		}
+		return false;
+	}
+	
 	boolean isDivisibleBy100(int year) {
 		if(year%100==0) {
 			return true;
@@ -50,6 +57,10 @@ public class LeapYear {
 		int year=isAYear(str);
 		
 		if(year>0){
+			
+			if(isDivisibleBy4000(year)) {
+				return false;
+			}
 
 			if(isDivisibleBy4(year) && isLessthan1582(year)){
 				return true;
@@ -66,6 +77,8 @@ public class LeapYear {
 			if(isDivisibleBy4(year) && !isDivisibleBy100(year)) {
 				return true;
 			}
+			
+			
 			
 			return false;
 			
@@ -93,10 +106,10 @@ public class LeapYear {
 				System.out.println(str + " is not a Leap Year");
 			}
 			
+		input.close();
 		}
 		
-		
-
+			
 
 	}
 
