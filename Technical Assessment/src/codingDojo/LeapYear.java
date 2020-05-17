@@ -3,6 +3,26 @@ import java.util.*;
 
 public class LeapYear {
 	
+	int isAYear(String str) {
+		try {
+			int year=Integer.parseInt(str);	
+			System.out.println("Year entered: " + year);
+			return year;
+		}
+		
+		catch(NumberFormatException ex){
+			return 0;
+		}
+			
+	}
+	
+	boolean isDivisibleBy400(int year) {
+		if(year%400==0) {
+			return true;
+		}
+		return false;
+	}
+	
 	boolean isLessthan1582(int year) {	
 		if(year<=1582) {
 			return true;
@@ -18,11 +38,27 @@ public class LeapYear {
 		return false;
 	}
 	
-	boolean isLeapYear(int year) {
-		if(isDivisibleBy4(year) && isLessthan1582(year)){
-			return true;
+	boolean isLeapYear(String str) {
+		
+		int year=isAYear(str);
+		
+		if(year>0){
+
+			if(isDivisibleBy4(year) && isLessthan1582(year)){
+				return true;
+			}
+			
+			if(isDivisibleBy400(year)) {
+				return true;
+			}
+			
+			return false;
+			
 		}
-		return false;
+		else{
+				return false;
+			}
+		
 	}
 
 	public static void main(String[] args) {
@@ -31,30 +67,22 @@ public class LeapYear {
 		Scanner input=new Scanner(System.in);
 		System.out.print("Enter a Year: ");
 		String str=input.nextLine();
-
-		try {
-			int year=Integer.parseInt(str);	
-			System.out.println("Year entered: " + year);
-			boolean result=ly.isLeapYear(year);
+			
+			boolean result=ly.isLeapYear(str);
 			
 			if(result==true) {
-				System.out.println(year + " is a Leap Year");
+				System.out.println(str + " is a Leap Year");
 			}
 			
-			else {
-				System.out.println(year + " is not a Leap Year");
+			else{
+				System.out.println(str + " is not a Leap Year");
 			}
 			
-			
-			
-			
 		}
-		catch(NumberFormatException ex) {
-			System.out.println("Not a valid Year");
-		}
+		
 		
 
 
 	}
 
-}
+
